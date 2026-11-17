@@ -20,6 +20,11 @@ while (have_rows('page_modules')) : the_row();
     'show_on'    => get_sub_field('show-on') ?: 'everywhere',
   ];
 
+  if (get_row_layout() === 'hero') {
+    $opts['container'] = 'none';
+    $opts['padding_y'] = 'py-0';
+  }
+
   // Öffne Section-Hülle nur, wenn Helper existieren – sonst simple Wrapper
   if (function_exists('section_open')) {
     section_open($opts);
@@ -33,6 +38,9 @@ while (have_rows('page_modules')) : the_row();
   }
 
   switch (get_row_layout()) {
+    case 'hero':
+      get_template_part('template-parts/flex/layout', 'hero'); break;
+
     case 'intro':
       get_template_part('template-parts/flex/layout', 'intro'); break;
 

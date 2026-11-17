@@ -3,3 +3,83 @@
  *
  * Add page-specific theme styles here.
  */
+
+.projecttheme-hero {
+  align-items: center;
+  background-color: #1a120d;
+  color: #f3f3f3;
+  display: flex;
+  justify-content: center;
+  min-height: 540px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+}
+
+.projecttheme-hero__image,
+.projecttheme-hero__overlay {
+  height: 100%;
+  inset: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.projecttheme-hero__image {
+  object-fit: cover;
+}
+
+.projecttheme-hero__overlay {
+  background: rgba(26, 18, 13, 0.4);
+}
+
+.projecttheme-hero__content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 90%;
+  position: relative;
+  z-index: 1;
+}
+
+.projecttheme-hero__title {
+  color: inherit;
+  font-family: var(--theme-font-heading);
+  font-size: 4.5rem;
+  font-weight: 700;
+  letter-spacing: -0.135rem;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.projecttheme-hero__subtitle {
+  font-family: var(--theme-font-body);
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.projecttheme-hero__cta {
+  background: var(--theme-color-primary);
+  border-radius: 9999px;
+  color: #f3f3f3;
+  font-family: var(--theme-font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 10px 20px;
+}
+
+@media (max-width: 767.98px) {
+  .projecttheme-hero {
+    min-height: 460px;
+  }
+
+  .projecttheme-hero__title {
+    font-size: 3rem;
+    letter-spacing: -0.09rem;
+  }
+
+  .projecttheme-hero__subtitle {
+    font-size: 1.125rem;
+  }
+}
