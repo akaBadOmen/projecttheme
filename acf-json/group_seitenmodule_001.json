@@ -1401,7 +1401,7 @@
                             "maxlength": "",
                             "rows": 3,
                             "placeholder": "",
-                            "new_lines": "br"
+                            "new_lines": ""
                         },
                         {
                             "key": "field_hero_cta",
@@ -1611,5 +1611,5 @@
             "json"
         ]
     },
-    "modified": 1794910000
+    "modified": 1794910143
 }
