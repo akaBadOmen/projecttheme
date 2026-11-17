@@ -20,7 +20,7 @@ while (have_rows('page_modules')) : the_row();
     'show_on'    => get_sub_field('show-on') ?: 'everywhere',
   ];
 
-  if (get_row_layout() === 'hero') {
+  if (in_array(get_row_layout(), ['hero', 'text_image'], true)) {
     $opts['container'] = 'none';
     $opts['padding_y'] = 'py-0';
   }
@@ -40,6 +40,9 @@ while (have_rows('page_modules')) : the_row();
   switch (get_row_layout()) {
     case 'hero':
       get_template_part('template-parts/flex/layout', 'hero'); break;
+
+    case 'text_image':
+      get_template_part('template-parts/flex/layout', 'text-image'); break;
 
     case 'intro':
       get_template_part('template-parts/flex/layout', 'intro'); break;

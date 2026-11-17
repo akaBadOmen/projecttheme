@@ -4,6 +4,74 @@
  * Add page-specific theme styles here.
  */
 
+.projecttheme-text-image {
+  padding: 72px 60px;
+}
+
+.projecttheme-text-image__row {
+  align-items: center;
+  display: flex;
+  gap: 24px;
+  margin: 0 auto;
+  max-width: 1320px;
+}
+
+.projecttheme-text-image__image-wrap,
+.projecttheme-text-image__content {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.projecttheme-text-image__image-wrap {
+  height: 440px;
+}
+
+.projecttheme-text-image__image {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.projecttheme-text-image__content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.projecttheme-text-image__headline {
+  color: var(--theme-color-secondary);
+  font-family: var(--theme-font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.03rem;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.projecttheme-text-image__text {
+  color: var(--theme-color-secondary);
+  font-family: var(--theme-font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.projecttheme-text-image__text p:last-child {
+  margin-bottom: 0;
+}
+
+.projecttheme-text-image__cta {
+  align-self: flex-start;
+  border: 1px solid var(--theme-color-primary);
+  border-radius: 9999px;
+  color: var(--theme-color-primary);
+  font-family: var(--theme-font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 10px 20px;
+}
+
 .projecttheme-hero {
   align-items: center;
   background-color: #1a120d;
@@ -70,6 +138,20 @@
 }
 
 @media (max-width: 767.98px) {
+  .projecttheme-text-image {
+    padding: 60px 20px;
+  }
+
+  .projecttheme-text-image__row {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .projecttheme-text-image__image-wrap {
+    height: 240px;
+  }
+
   .projecttheme-hero {
     min-height: 460px;
   }
