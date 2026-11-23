@@ -20,7 +20,7 @@ while (have_rows('page_modules')) : the_row();
     'show_on'    => get_sub_field('show-on') ?: 'everywhere',
   ];
 
-  if (in_array(get_row_layout(), ['hero', 'text_image', 'projects_teaser', 'services', 'faq', 'cta'], true)) {
+  if (in_array(get_row_layout(), ['hero', 'text_image', 'projects_teaser', 'services', 'faq', 'cta', 'page_header', 'contact_info', 'project_list', 'image_full', 'history', 'team', 'sketch_compare'], true)) {
     $opts['container'] = 'none';
     $opts['padding_y'] = 'py-0';
   }
@@ -103,6 +103,27 @@ while (have_rows('page_modules')) : the_row();
 
     case 'cta':
       get_template_part('template-parts/flex/layout', 'cta'); break;
+
+    case 'page_header':
+      get_template_part('template-parts/flex/layout', 'page-header'); break;
+
+    case 'contact_info':
+      get_template_part('template-parts/flex/layout', 'contact-info'); break;
+
+    case 'project_list':
+      get_template_part('template-parts/flex/layout', 'project-list'); break;
+
+    case 'image_full':
+      get_template_part('template-parts/flex/layout', 'image-full'); break;
+
+    case 'history':
+      get_template_part('template-parts/flex/layout', 'history'); break;
+
+    case 'team':
+      get_template_part('template-parts/flex/layout', 'team'); break;
+
+    case 'sketch_compare':
+      get_template_part('template-parts/flex/layout', 'sketch-compare'); break;
   }
 
   if (function_exists('section_close')) {

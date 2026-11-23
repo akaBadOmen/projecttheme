@@ -222,3 +222,209 @@ a.tg-services__card:hover img { transform: scale(1.03); }
 .tg-faq__actions { display: flex; justify-content: center; gap: var(--space-300); flex-wrap: wrap; }
 .tg-faq__more[hidden] { display: none; }
 .tg-faq__more { cursor: pointer; }
+
+
+/* =========================================================
+ * Unterseiten-Module (Figma: Projekte, Leistungen, Werkstatt & Team)
+ * ========================================================= */
+
+.screen-reader-text {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/*** Page Header – Padding 80/60/40/60, Gap 16 ***/
+.tg-page-header { padding: 5rem 0 2.5rem; }
+.tg-page-header__eyebrow { margin: 0 0 1rem; }
+.tg-page-header__title { margin: 0; letter-spacing: -0.03em; }  /* Cormorant Bold 72, -3% */
+.tg-page-header__text { margin: 1rem 0 0; max-width: 45rem; }
+@media (max-width: 767.98px) {
+  .tg-page-header { padding: 3rem 0 1.5rem; }
+}
+
+/*** Contact Info – 3 Spalten, Gap 64, Linie oben, Padding-Top 20 ***/
+.tg-contact-info { padding: 0 0 4.5rem; }
+.tg-contact-info__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4rem;
+}
+.tg-contact-info__item {
+  border-top: 1px solid var(--theme-color-text);
+  padding-top: 1.25rem;
+}
+.tg-contact-info__title {
+  font-family: var(--theme-font-body);
+  font-size: var(--theme-font-size-base);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0;
+  margin: 0 0 0.5rem;
+}
+.tg-contact-info__text { font-size: var(--theme-font-size-small); line-height: 1.4; margin: 0; }
+.tg-contact-info__text a:hover { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 767.98px) {
+  .tg-contact-info { padding-bottom: 3rem; }
+  .tg-contact-info__grid { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+/*** Project List – Bild 648×480, abwechselnd links/rechts, 96 px zwischen den Projekten ***/
+.tg-project-list { padding: 1.5rem 0 4.5rem; }
+.tg-project-list__items { display: flex; flex-direction: column; gap: 6rem; }
+.tg-project {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--theme-gutter);
+  align-items: center;
+}
+.tg-project:nth-child(even) .tg-project__image { order: 2; }
+.tg-project__image {
+  display: block;
+  aspect-ratio: 648 / 480;
+  overflow: hidden;
+  background: var(--theme-color-surface);
+}
+.tg-project__image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+.tg-project:hover .tg-project__image img { transform: scale(1.03); }
+.tg-project__content { display: flex; flex-direction: column; align-items: flex-start; gap: 0.875rem; }  /* Gap 14 */
+.tg-project__meta { font-size: var(--theme-font-size-small); line-height: 1.4; margin: 0; white-space: pre; }
+.tg-project__title { margin: 0; }
+.tg-project__text { margin: 0; max-width: 40rem; }
+.tg-project__button { margin-top: 0.375rem; }   /* Spacer 6 */
+@media (max-width: 767.98px) {
+  .tg-project-list { padding: 1rem 0 3rem; }
+  .tg-project-list__items { gap: 3.5rem; }
+  .tg-project { grid-template-columns: 1fr; gap: 1.25rem; }
+  .tg-project:nth-child(even) .tg-project__image { order: 0; }
+  .tg-project__meta { white-space: normal; }
+}
+
+/*** Image Full – volle Breite ***/
+.tg-image-full { width: 100%; overflow: hidden; background: var(--theme-color-surface); }
+.tg-image-full img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tg-image-full--large  { height: clamp(18rem, 43vw, 38.75rem); }   /* 620 px bei 1440 */
+.tg-image-full--medium { height: clamp(15rem, 33vw, 30rem); }
+
+/*** History – 2 Spalten (Gap 96), darunter Kennzahlen ***/
+.tg-history { padding: 4.5rem 0; }
+.tg-history__row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6rem;
+  margin-bottom: 3.5rem;          /* Gap 56 */
+}
+.tg-history__eyebrow { margin: 0 0 0.875rem; }
+.tg-history__title { margin: 0; }
+.tg-history__text > * { margin: 0 0 1rem; }
+.tg-history__text > :last-child { margin-bottom: 0; }
+.tg-history__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4rem;
+  margin: 0;
+}
+.tg-history__stat { border-top: 1px solid var(--theme-color-text); padding-top: 1.25rem; }
+.tg-history__number {
+  font-family: var(--theme-font-heading);
+  font-size: var(--theme-font-size-h2);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.25rem;
+}
+.tg-history__label { font-size: var(--theme-font-size-small); line-height: 1.4; margin: 0; }
+@media (max-width: 767.98px) {
+  .tg-history { padding: 3rem 0; }
+  .tg-history__row { grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 2.5rem; }
+  .tg-history__stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+}
+
+/*** Team – 4 Spalten, Gap 24, Bild 312×360 ***/
+.tg-team { padding: 0 0 4.5rem; }
+.tg-team__title { margin: 0 0 2rem; }
+.tg-team__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--theme-gutter);
+}
+.tg-team__member { display: flex; flex-direction: column; gap: 0.5rem; }
+.tg-team__image { aspect-ratio: 312 / 360; overflow: hidden; background: var(--theme-color-surface); }
+.tg-team__image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tg-team__name { font-weight: 600; line-height: 1.4; margin: 0; }
+.tg-team__role { font-size: var(--theme-font-size-small); line-height: 1.4; margin: 0; }
+@media (max-width: 991.98px) {
+  .tg-team__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 767.98px) {
+  .tg-team { padding-bottom: 3rem; }
+}
+
+
+/* =========================================================
+ * Projekt-Detailseite (single-projekt.php) – Figma "Projekt-Detail"
+ * ========================================================= */
+
+/*** Project Intro – Padding 72/60, Gap 32; Text & Fakten 2 Spalten, Gap 96 ***/
+.tg-project-intro { padding: 4.5rem 0; }
+.tg-project-intro__back {
+  display: inline-block;
+  font-size: var(--theme-font-size-small);
+  line-height: 1.4;
+  margin-bottom: 2rem;
+}
+.tg-project-intro__back:hover { text-decoration: underline; text-underline-offset: 3px; }
+.tg-project-intro__row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6rem;
+  align-items: start;
+}
+.tg-project-intro__title { margin: 0 0 1.25rem; letter-spacing: -0.03em; }   /* Cormorant Bold 72 */
+.tg-project-intro__text > * { margin: 0 0 1rem; }
+.tg-project-intro__text > :last-child,
+p.tg-project-intro__text { margin-bottom: 0; }
+.tg-project-intro__facts { margin: 0; }
+.tg-project-intro__fact {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--theme-color-text);
+}
+.tg-project-intro__fact dt { font-weight: 400; font-size: var(--theme-font-size-small); line-height: 1.4; }
+.tg-project-intro__fact dd { margin: 0; font-weight: 600; line-height: 1.4; text-align: right; }
+@media (max-width: 767.98px) {
+  .tg-project-intro { padding: 3rem 0; }
+  .tg-project-intro__row { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+/*** Sketch Compare – Überschrift, 2 Bilder 648×460, Beschriftung darunter ***/
+.tg-sketch { padding: 0 0 4.5rem; }
+.tg-sketch__title { margin: 0 0 1.5rem; }
+.tg-sketch__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--theme-gutter); }
+.tg-sketch__card { margin: 0; display: flex; flex-direction: column; gap: 0.625rem; }
+.tg-sketch__image { aspect-ratio: 648 / 460; overflow: hidden; background: var(--theme-color-surface); }
+.tg-sketch__image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tg-sketch__label { font-size: var(--theme-font-size-small); line-height: 1.4; }
+@media (max-width: 767.98px) {
+  .tg-sketch { padding-bottom: 3rem; }
+  .tg-sketch__grid { grid-template-columns: 1fr; }
+}
+
+/*** Project Navigation – Padding 24/60/72, links "← Vorheriges", rechts "Nächstes Projekt →" ***/
+.tg-project-nav { padding: 1.5rem 0 4.5rem; }
+.tg-project-nav__inner { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+.tg-project-nav__prev { font-size: var(--theme-font-size-small); line-height: 1.4; }
+.tg-project-nav__next { font-weight: 600; line-height: 1.4; }
+.tg-project-nav a:hover { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 767.98px) {
+  .tg-project-nav { padding: 1rem 0 3rem; }
+  .tg-project-nav__inner { flex-direction: column-reverse; align-items: flex-start; }
+}
