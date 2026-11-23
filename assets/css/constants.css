@@ -1,19 +1,59 @@
 /*
- * Constants
- *
- * Keep colors and reusable theme values here.
+ * Constants – Design-Tokens aus Figma (Simple Design System – Tischlerei)
  */
 :root {
-  --theme-color-primary: rgb(61, 61, 66
-  );
-  --theme-color-secondary: #1f2020;
-  --theme-color-body: #F5F5F5
-
+  /* Farben */
+  --theme-color-primary: #3d3d42;      /* Primary-Button */
+  --theme-color-secondary: #1f2020;    /* Fließtext */
+  --theme-color-body: #ffffff;         /* Seitenhintergrund */
+  --theme-color-surface: #f1f1f1;      /* CTA, Footer */
+  --theme-color-border: #dbdbdb;       /* Trennlinien */
+  --theme-color-text: #000000;         /* Überschriften */
+  --theme-color-white: #ffffff;
+  --theme-color-brand: #8e2f25;        /* Oxblood (Fokus, Akzent) */
+  --theme-color-wood: #2e221a;         /* Nuss (Logo) */
 
   --theme-transition: all 0.3s ease-in-out;
 
-  --theme-font-body: 'Inter', sans-serif;
-  --theme-font-heading: 'coromant-garamond', serif;
+  /* Schriften */
+  --theme-font-body: 'Inter', system-ui, sans-serif;
+  --theme-font-heading: 'Cormorant Garamond', Georgia, serif;
 
-  
+  /* Schriftgrößen (Desktop) */
+  --theme-font-size-base: 1rem;        /* 16px Fließtext */
+  --theme-font-size-small: 0.875rem;   /* 14px Meta, Buttons */
+  --theme-font-size-h1: 4.5rem;        /* 72px Title Hero */
+  --theme-font-size-h2: 3rem;          /* 48px Title Page */
+  --theme-font-size-h3: 1.5rem;        /* 24px Heading */
+  --theme-font-size-subtitle: 1.25rem; /* 20px Subheading */
+
+  --theme-line-height-body: 1.5;
+  --theme-line-height-heading: 1.2;
+
+  /* Abstände (Figma: Space-Variablen) */
+  --space-100: 0.25rem;  /* 4  */
+  --space-200: 0.5rem;   /* 8  */
+  --space-300: 0.75rem;  /* 12 */
+  --space-400: 1rem;     /* 16 */
+  --space-600: 1.5rem;   /* 24 */
+  --space-800: 2rem;     /* 32 */
+  --space-1200: 3rem;    /* 48 */
+  --space-1600: 4rem;    /* 64 */
+  --space-2400: 6rem;    /* 96 */
+
+  /* Layout */
+  --theme-container: 75rem;            /* 1200px Inhaltsbreite */
+  --theme-container-narrow: 68.5rem;   /* 1096px = 10 Spalten (FAQ) */
+  --theme-gutter: 1.5rem;              /* 24px */
+  --theme-section-padding: 6rem;       /* 96px oben/unten */
+  --theme-radius-full: 9999px;
+}
+
+/* Mobile: kleinere Überschriften und Abstände */
+@media (max-width: 767.98px) {
+  :root {
+    --theme-font-size-h1: 2.5rem;      /* 40px */
+    --theme-font-size-h2: 2rem;        /* 32px */
+    --theme-section-padding: 3.5rem;   /* 56px */
+  }
 }

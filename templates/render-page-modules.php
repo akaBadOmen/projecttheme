@@ -20,7 +20,7 @@ while (have_rows('page_modules')) : the_row();
     'show_on'    => get_sub_field('show-on') ?: 'everywhere',
   ];
 
-  if (in_array(get_row_layout(), ['hero', 'text_image'], true)) {
+  if (in_array(get_row_layout(), ['hero', 'text_image', 'projects_teaser', 'services', 'faq', 'cta'], true)) {
     $opts['container'] = 'none';
     $opts['padding_y'] = 'py-0';
   }
@@ -91,6 +91,18 @@ while (have_rows('page_modules')) : the_row();
 
     case 'project_highlight':
       get_template_part('template-parts/flex/layout', 'project-highlight'); break;
+
+    case 'projects_teaser':
+      get_template_part('template-parts/flex/layout', 'projects-teaser'); break;
+
+    case 'services':
+      get_template_part('template-parts/flex/layout', 'services'); break;
+
+    case 'faq':
+      get_template_part('template-parts/flex/layout', 'faq'); break;
+
+    case 'cta':
+      get_template_part('template-parts/flex/layout', 'cta'); break;
   }
 
   if (function_exists('section_close')) {

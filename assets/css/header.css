@@ -11,14 +11,14 @@ header {
   z-index: 1000;
   top: 0;
   left: 0;
-  padding: 1rem;
+  padding: 1.25rem;              /* Mobile: 20px, wie in Figma */
+  border-bottom: 1px solid #DBDBDB;
 }
 
-
-@media (min-width: 767px) {
+@media (min-width: 768px) {
   header {
     position: relative;
-  padding: 2rem 3rem;
+    padding: 1.25rem 4rem;       /* Desktop: 20px oben/unten, 64px seitlich */
   }
 }
 
@@ -26,14 +26,9 @@ header {
   margin: 0;
 }
 
+/* Logo: über die Höhe steuern, nicht über die Breite */
 .site-logo {
   display: block;
-  width: min(100%, 180px);
-  height: auto;
-}
-
-@media (min-width: 767px) {
-  .site-logo {
-    width: min(100%, 283px);
-  }
+  height: 32px;                  /* Figma: Header-Logo 32 px */
+  width: auto;
 }

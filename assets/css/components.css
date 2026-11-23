@@ -9,8 +9,10 @@
 
 .btn-primary,
 .btn-secondary {
-  border-radius: 0.75rem;
-  padding: 0.75rem 1.5rem;
+  border-radius: var(--theme-radius-full);
+  padding: 0.625rem 1.25rem;
+  font-weight: 600;
+  font-size: var(--theme-font-size-small);
 }
 
 .btn-primary {
@@ -19,8 +21,9 @@
 }
 
 .btn-secondary {
-  background-color: var(--theme-color-secondary);
-  color: white;
+  background-color: transparent;
+  border: 1px solid var(--theme-color-primary);
+  color: var(--theme-color-primary);
 }
 
 
@@ -39,3 +42,144 @@
 .projecttheme-image-slider .carousel-item img {
   object-fit: cover;
 }
+
+/* =========================================================
+ * Tischlerei-Module (Figma: Komponenten Tischlerei)
+ * ========================================================= */
+
+/*** Buttons (Figma: Button Primary / Secondary, Pill) ***/
+.tg-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.25rem;            /* 10 / 20 */
+  border: 1px solid var(--theme-color-primary);
+  border-radius: var(--theme-radius-full);
+  font-family: var(--theme-font-body);
+  font-size: var(--theme-font-size-small);
+  font-weight: 600;
+  line-height: 1;
+  transition: var(--theme-transition);
+}
+.tg-btn--primary,
+.tg-btn--primary:hover,
+.tg-btn--primary:focus { background: var(--theme-color-primary); color: var(--theme-color-white); }
+.tg-btn--primary:hover { background: var(--theme-color-secondary); }
+.tg-btn--secondary,
+.tg-btn--secondary:focus { background: transparent; color: var(--theme-color-primary); }
+.tg-btn--secondary:hover { background: var(--theme-color-primary); color: var(--theme-color-white); }
+.tg-btn:focus-visible { outline: 2px solid var(--theme-color-brand); outline-offset: 3px; }
+
+/*** Grundgerüst der Sektionen ***/
+.tg-section { padding: var(--theme-section-padding) 0; }
+.tg-container {
+  width: 100%;
+  max-width: calc(var(--theme-container) + 2 * var(--space-1600));
+  margin: 0 auto;
+  padding: 0 var(--space-1600);         /* 64px wie im Header */
+}
+.tg-container--narrow { max-width: calc(var(--theme-container-narrow) + 2 * var(--space-1600)); }
+@media (max-width: 767.98px) {
+  .tg-container { padding: 0 1.25rem; } /* 20px mobil */
+}
+
+/* Kopfzeile (Überschrift + Einleitung), zentriert */
+.tg-teaser__head,
+.tg-services__head,
+.tg-faq__head {
+  text-align: center;
+  max-width: 45rem;
+  margin: 0 auto var(--space-1200);
+}
+.tg-teaser__title,
+.tg-services__title,
+.tg-faq__title { margin-bottom: var(--space-300); }
+.tg-teaser__intro,
+.tg-services__intro,
+.tg-faq__intro { font-size: var(--theme-font-size-subtitle); margin: 0; }
+
+/*** Projects Teaser + Services: Kartenraster ***/
+.tg-teaser__grid,
+.tg-services__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--theme-gutter);
+}
+@media (max-width: 991.98px) {
+  .tg-teaser__grid, .tg-services__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 575.98px) {
+  .tg-teaser__grid, .tg-services__grid { grid-template-columns: 1fr; }
+}
+.tg-teaser__card,
+.tg-services__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-300);                /* 12px */
+  color: inherit;
+}
+.tg-teaser__image,
+.tg-services__image { overflow: hidden; background: var(--theme-color-surface); }
+.tg-teaser__image { aspect-ratio: 4 / 3; }
+.tg-services__image { aspect-ratio: 423 / 360; }
+.tg-teaser__image img,
+.tg-services__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+a.tg-teaser__card:hover img,
+a.tg-services__card:hover img { transform: scale(1.03); }
+.tg-teaser__card-title,
+.tg-services__card-title {
+  font-family: var(--theme-font-body);
+  font-size: var(--theme-font-size-base);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.4;
+  margin: 0 0 var(--space-100);
+}
+.tg-teaser__card-text,
+.tg-services__card-text { margin: 0; font-size: var(--theme-font-size-base); }
+.tg-teaser__actions,
+.tg-faq__actions { text-align: center; margin-top: var(--space-1200); }
+
+/*** FAQ ***/
+.tg-faq__list { border-bottom: 1px solid var(--theme-color-border); }
+.tg-faq__item { border-top: 1px solid var(--theme-color-border); }
+.tg-faq__question {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-600);
+  padding: var(--space-600) 0;          /* 24px */
+  font-weight: 600;
+  font-size: var(--theme-font-size-base);
+}
+.tg-faq__question::-webkit-details-marker { display: none; }
+.tg-faq__icon { position: relative; flex: 0 0 1rem; width: 1rem; height: 1rem; }
+.tg-faq__icon::before,
+.tg-faq__icon::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 0;
+  width: 100%; height: 2px;
+  margin-top: -1px;
+  background: currentColor;
+  transition: transform 0.25s ease;
+}
+.tg-faq__icon::after { transform: rotate(90deg); }
+.tg-faq__item[open] .tg-faq__icon::after { transform: rotate(0deg); }   /* + wird zu – */
+.tg-faq__answer { padding: 0 0 var(--space-600); max-width: 50rem; }
+.tg-faq__answer > :last-child { margin-bottom: 0; }
+.tg-faq__question:focus-visible { outline: 2px solid var(--theme-color-brand); outline-offset: 4px; }
+
+/*** CTA ***/
+.tg-cta { background: var(--theme-color-surface); }
+.tg-cta__inner { text-align: center; max-width: calc(45rem + 2 * var(--space-1600)); }
+.tg-cta__title { margin-bottom: var(--space-400); }
+.tg-cta__text { font-size: var(--theme-font-size-subtitle); margin-bottom: var(--space-800); }
