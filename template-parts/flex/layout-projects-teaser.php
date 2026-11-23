@@ -9,10 +9,10 @@ $button = get_sub_field('button');
 <div class="tg-section tg-teaser">
   <div class="tg-container">
   <?php if ($title || $text) : ?>
-    <header class="tg-teaser__head">
+    <div class="tg-teaser__head">
       <?php if ($title) : ?><h2 class="tg-teaser__title"><?php echo esc_html($title); ?></h2><?php endif; ?>
       <?php if ($text) : ?><p class="tg-teaser__intro"><?php echo nl2br(esc_html($text)); ?></p><?php endif; ?>
-    </header>
+    </div>
   <?php endif; ?>
   <?php if (have_rows('items')) : ?>
     <div class="tg-teaser__grid">

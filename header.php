@@ -40,7 +40,11 @@
             'container_class' => 'main-menu-container',
           )
         );
+        $tg_contact = get_page_by_path( 'kontakt' ) ? get_page_by_path( 'kontakt' ) : get_page_by_path( 'contact' );
+        if ( $tg_contact ) :
         ?>
+          <a class="menu-cta tg-btn tg-btn--primary" href="<?php echo esc_url( get_permalink( $tg_contact ) ); ?>"><?php esc_html_e( 'Projekt anfangen', 'textdomaintomodify' ); ?></a>
+        <?php endif; ?>
     </nav><!-- #site-navigation -->
   </header><!-- #masthead -->
 

@@ -9,11 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const closeMenu = () => {
     navigation.classList.remove('is-open');
+    document.body.classList.remove('menu-open');
     toggle.setAttribute('aria-expanded', 'false');
   };
 
   toggle.addEventListener('click', () => {
     const isOpen = navigation.classList.toggle('is-open');
+    document.body.classList.toggle('menu-open', isOpen);
     toggle.setAttribute('aria-expanded', String(isOpen));
   });
 

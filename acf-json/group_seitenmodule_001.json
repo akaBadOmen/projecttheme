@@ -2142,12 +2142,54 @@
                             ]
                         },
                         {
+                            "key": "field_faq_visible",
+                            "label": "Anzahl sichtbarer Fragen",
+                            "name": "visible",
+                            "aria-label": "",
+                            "type": "number",
+                            "instructions": "Weitere Fragen bleiben versteckt und erscheinen per Klick auf den Button.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": 3,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "min": 1,
+                            "max": "",
+                            "step": 1
+                        },
+                        {
+                            "key": "field_faq_more_label",
+                            "label": "Text des Aufklapp-Buttons",
+                            "name": "more_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Weitere Fragen",
+                            "maxlength": "",
+                            "placeholder": "Weitere Fragen",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_faq_button",
-                            "label": "Button (z. B. Weitere Fragen)",
+                            "label": "Zusätzlicher Link-Button (optional)",
                             "name": "button",
                             "aria-label": "",
                             "type": "link",
-                            "instructions": "",
+                            "instructions": "Nur ausfüllen, wenn der Button auf eine andere Seite führen soll (z. B. Kontakt).",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -2288,5 +2330,5 @@
             "json"
         ]
     },
-    "modified": 1795432861
+    "modified": 1795436686
 }

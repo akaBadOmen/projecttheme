@@ -8,10 +8,10 @@ $text  = get_sub_field('text');
 <div class="tg-section tg-services">
   <div class="tg-container">
   <?php if ($title || $text) : ?>
-    <header class="tg-services__head">
+    <div class="tg-services__head">
       <?php if ($title) : ?><h2 class="tg-services__title"><?php echo esc_html($title); ?></h2><?php endif; ?>
       <?php if ($text) : ?><p class="tg-services__intro"><?php echo nl2br(esc_html($text)); ?></p><?php endif; ?>
-    </header>
+    </div>
   <?php endif; ?>
   <?php if (have_rows('items')) : ?>
     <div class="tg-services__grid">
