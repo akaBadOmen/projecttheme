@@ -20,7 +20,7 @@ while (have_rows('page_modules')) : the_row();
     'show_on'    => get_sub_field('show-on') ?: 'everywhere',
   ];
 
-  if (in_array(get_row_layout(), ['hero', 'text_image', 'projects_teaser', 'services', 'faq', 'cta', 'page_header', 'contact_info', 'project_list', 'image_full', 'history', 'team', 'sketch_compare'], true)) {
+  if (in_array(get_row_layout(), ['hero', 'text_image', 'projects_teaser', 'services', 'faq', 'cta', 'page_header', 'contact_info', 'project_list', 'image_full', 'history', 'team', 'sketch_compare', 'contact_form'], true)) {
     $opts['container'] = 'none';
     $opts['padding_y'] = 'py-0';
   }
@@ -124,6 +124,9 @@ while (have_rows('page_modules')) : the_row();
 
     case 'sketch_compare':
       get_template_part('template-parts/flex/layout', 'sketch-compare'); break;
+
+    case 'contact_form':
+      get_template_part('template-parts/flex/layout', 'contact-form'); break;
   }
 
   if (function_exists('section_close')) {

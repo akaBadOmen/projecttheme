@@ -89,3 +89,12 @@ h3, .h3 { font-size: var(--theme-font-size-h3); font-weight: 600; letter-spacing
   line-height: 1.5;
   margin-bottom: 2rem;
 }
+
+/* Schöne Umbrüche: Überschriften ausbalanciert, keine einzelnen Wörter in der letzten Zeile */
+h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
+p, li, dd { text-wrap: pretty; }
+
+/* Am Handy lange deutsche Wörter trennen statt überlaufen lassen */
+@media (max-width: 575.98px) {
+  h1, h2, .h1, .h2 { hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; }
+}

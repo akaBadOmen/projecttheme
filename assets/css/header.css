@@ -12,13 +12,13 @@ header {
   top: 0;
   left: 0;
   padding: 1.25rem;              /* Mobile: 20px, wie in Figma */
-  border-bottom: 1px solid #DBDBDB;
+  border-bottom: 1px solid var(--theme-color-border);
 }
 
 @media (min-width: 768px) {
   header {
     position: relative;
-    padding: 1.25rem 4rem;       /* Desktop: 20px oben/unten, 64px seitlich */
+    padding: 1.25rem var(--theme-page-padding); /* Desktop 60px seitlich (Figma), Tablet 40px */
   }
 }
 
@@ -31,4 +31,9 @@ header {
   display: block;
   height: 32px;                  /* Figma: Header-Logo 32 px */
   width: auto;
+}
+/* Mobil: Header ist fixiert (73px) – Platz für den fixierten Header schaffen, damit nichts darunter verschwindet */
+@media (max-width: 767.98px) {
+  .site-content { padding-top: 73px; }
+  .admin-bar .site-header { top: 46px; }
 }

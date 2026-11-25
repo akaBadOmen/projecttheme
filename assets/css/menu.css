@@ -22,7 +22,7 @@
   justify-content: center;
   width: 2.75rem;               /* 44px Klickfläche */
   height: 2.75rem;
-  margin-right: -0.75rem;       /* Icon optisch bündig am Rand */
+  margin: -0.375rem -0.75rem -0.375rem 0;  /* Icon bündig am Rand, Header bleibt 73px hoch */
   padding: 0;
   border: 0;
   background: transparent;
@@ -133,7 +133,11 @@
   .main-menu {
     display: flex;
     align-items: center;
-    gap: 3.125rem;                /* Figma: 50px */
+    gap: clamp(1.25rem, 3.5vw, 3.125rem);   /* Figma: 50px, auf kleineren Bildschirmen enger */
+  }
+
+  .main-menu a {
+    white-space: nowrap;          /* "Werkstatt & Team" nie umbrechen */
   }
 
   .main-menu a {

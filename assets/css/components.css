@@ -74,14 +74,11 @@
 .tg-section { padding: var(--theme-section-padding) 0; }
 .tg-container {
   width: 100%;
-  max-width: calc(var(--theme-container) + 2 * var(--space-1600));
+  max-width: calc(var(--theme-container) + 2 * var(--theme-page-padding));
   margin: 0 auto;
-  padding: 0 var(--space-1600);         /* 64px wie im Header */
+  padding: 0 var(--theme-page-padding); /* Desktop 60 / Tablet 40 / Handy 20 */
 }
-.tg-container--narrow { max-width: calc(var(--theme-container-narrow) + 2 * var(--space-1600)); }
-@media (max-width: 767.98px) {
-  .tg-container { padding: 0 1.25rem; } /* 20px mobil */
-}
+.tg-container--narrow { max-width: calc(var(--theme-container-narrow) + 2 * var(--theme-page-padding)); }
 
 /* Kopfzeile (Überschrift + Einleitung), zentriert */
 .tg-teaser__head,
@@ -183,7 +180,7 @@ a.tg-services__card:hover img { transform: scale(1.03); }
 
 /*** CTA ***/
 .tg-cta { background: var(--theme-color-surface); }
-.tg-cta__inner { text-align: center; max-width: calc(45rem + 2 * var(--space-1600)); }
+.tg-cta__inner { text-align: center; max-width: calc(45rem + 2 * var(--theme-page-padding)); }
 .tg-cta__title { margin-bottom: var(--space-400); }
 .tg-cta__text { font-size: var(--theme-font-size-subtitle); margin-bottom: var(--space-800); }
 
@@ -212,11 +209,7 @@ a.tg-services__card:hover img { transform: scale(1.03); }
 .tg-teaser__card-text { font-size: var(--theme-font-size-small); line-height: 1.4; } /* Inter 14 / 140% */
 .tg-services__card-text,
 .tg-cta__text { font-size: var(--theme-font-size-base); line-height: 1.5; }          /* Inter 16 / 150% */
-.tg-cta__title {                                                      /* Cormorant SemiBold 24 / 120%, -2% */
-  font-size: var(--theme-font-size-h3);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
+.tg-cta__title { margin-bottom: 1rem; }  /* Cormorant Bold 48, -2% – wie Figma "Projekte" */
 
 .tg-faq__item[hidden] { display: none; }
 .tg-faq__actions { display: flex; justify-content: center; gap: var(--space-300); flex-wrap: wrap; }
@@ -240,7 +233,7 @@ a.tg-services__card:hover img { transform: scale(1.03); }
 .tg-page-header { padding: 5rem 0 2.5rem; }
 .tg-page-header__eyebrow { margin: 0 0 1rem; }
 .tg-page-header__title { margin: 0; letter-spacing: -0.03em; }  /* Cormorant Bold 72, -3% */
-.tg-page-header__text { margin: 1rem 0 0; max-width: 45rem; }
+.tg-page-header__text { margin: 1rem 0 0; max-width: 52rem; }   /* Figma: Einleitung einzeilig auf Desktop */
 @media (max-width: 767.98px) {
   .tg-page-header { padding: 3rem 0 1.5rem; }
 }
@@ -253,7 +246,7 @@ a.tg-services__card:hover img { transform: scale(1.03); }
   gap: 4rem;
 }
 .tg-contact-info__item {
-  border-top: 1px solid var(--theme-color-text);
+  border-top: 1px solid var(--theme-color-border);
   padding-top: 1.25rem;
 }
 .tg-contact-info__title {
@@ -292,6 +285,9 @@ a.tg-services__card:hover img { transform: scale(1.03); }
 .tg-project__content { display: flex; flex-direction: column; align-items: flex-start; gap: 0.875rem; }  /* Gap 14 */
 .tg-project__meta { font-size: var(--theme-font-size-small); line-height: 1.4; margin: 0; white-space: pre; }
 .tg-project__title { margin: 0; }
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  .tg-project__title { font-size: 2.25rem; }   /* Tablet: 36px, damit lange Titel in die halbe Spalte passen */
+}
 .tg-project__text { margin: 0; max-width: 40rem; }
 .tg-project__button { margin-top: 0.375rem; }   /* Spacer 6 */
 @media (max-width: 767.98px) {
@@ -326,7 +322,7 @@ a.tg-services__card:hover img { transform: scale(1.03); }
   gap: 4rem;
   margin: 0;
 }
-.tg-history__stat { border-top: 1px solid var(--theme-color-text); padding-top: 1.25rem; }
+.tg-history__stat { border-top: 1px solid var(--theme-color-border); padding-top: 1.25rem; }
 .tg-history__number {
   font-family: var(--theme-font-heading);
   font-size: var(--theme-font-size-h2);
@@ -396,7 +392,7 @@ p.tg-project-intro__text { margin-bottom: 0; }
   align-items: baseline;
   gap: 1rem;
   padding: 1rem 0;
-  border-top: 1px solid var(--theme-color-text);
+  border-top: 1px solid var(--theme-color-border);
 }
 .tg-project-intro__fact dt { font-weight: 400; font-size: var(--theme-font-size-small); line-height: 1.4; }
 .tg-project-intro__fact dd { margin: 0; font-weight: 600; line-height: 1.4; text-align: right; }
@@ -427,4 +423,120 @@ p.tg-project-intro__text { margin-bottom: 0; }
 @media (max-width: 767.98px) {
   .tg-project-nav { padding: 1rem 0 3rem; }
   .tg-project-nav__inner { flex-direction: column-reverse; align-items: flex-start; }
+}
+
+
+/*** Galerie (Boilerplate-Modul) – Layout nach Figma "Gallery":
+     2 Bilder nebeneinander (648×480), darunter 1 breites (1320×560), Muster wiederholt sich ***/
+section.galerie { padding: 0 0 4.5rem !important; }
+.galerie .container-lg {
+  max-width: calc(var(--theme-container) + 2 * var(--theme-page-padding));
+  padding: 0 var(--theme-page-padding);
+}
+.galerie .row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--theme-gutter);
+  margin: 0;
+}
+.galerie .row > * { width: auto; max-width: none; padding: 0; margin: 0; }
+.galerie .row > :nth-child(3n),
+.galerie .row > :only-child { grid-column: 1 / -1; }   /* einzelnes Bild = volle Breite */
+.galerie .figure { margin: 0; }
+.galerie .ratio { --bs-aspect-ratio: calc(480 / 648 * 100%); margin: 0 !important; background: var(--theme-color-surface); }
+.galerie .row > :nth-child(3n) .ratio,
+.galerie .row > :only-child .ratio { --bs-aspect-ratio: calc(560 / 1320 * 100%); }
+/* Zwei Galerie-Module direkt hintereinander: nur 24px Abstand, wie ein zusammenhängender Block */
+section.galerie:has(+ section.galerie) { padding-bottom: var(--theme-gutter) !important; }
+.galerie img.rounded { border-radius: 0 !important; }
+@media (max-width: 767.98px) {
+  section.galerie { padding-bottom: 3rem !important; }
+  .galerie .row { grid-template-columns: 1fr; gap: 1rem; }
+  .galerie .ratio,
+  .galerie .row > :nth-child(3n) .ratio { --bs-aspect-ratio: 75%; }
+}
+
+
+/*** Contact Form – Figma: Spalte 640 px, Padding 72/120, Gap 20; Felder 48 px hoch, Rand #D9D9D9, Radius 8 ***/
+.tg-contact-form { padding: 4.5rem 0; }
+.tg-contact-form__inner { max-width: 40rem; }
+.tg-contact-form__eyebrow { margin: 0 0 1.25rem; }
+.tg-contact-form__title { margin: 0 0 1.25rem; }
+.tg-contact-form__text { margin: 0 0 1.25rem; }
+.tg-contact-form form { display: flex; flex-direction: column; gap: 1.25rem; }
+.tg-contact-form p { margin: 0; }
+.tg-form__field { display: flex; flex-direction: column; gap: 0.375rem; }
+.tg-form__field label { font-size: var(--theme-font-size-small); line-height: 1.4; }
+.tg-contact-form .wpcf7-form-control-wrap { display: block; }
+.tg-form__field input,
+.tg-form__field select,
+.tg-form__field textarea {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.75rem 1rem;
+  font: inherit;
+  color: var(--theme-color-text);
+  background: var(--theme-color-white);
+  border: 1px solid #d9d9d9;
+  border-radius: 0.5rem;
+  transition: border-color 0.2s ease;
+}
+.tg-form__field textarea { height: 10rem; resize: vertical; }
+.tg-form__field select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--theme-color-primary) 50%), linear-gradient(135deg, var(--theme-color-primary) 50%, transparent 50%); background-position: calc(100% - 1.25rem) 50%, calc(100% - 0.9rem) 50%; background-size: 0.35rem 0.35rem; background-repeat: no-repeat; padding-right: 2.5rem; }
+.tg-form__field input:focus,
+.tg-form__field select:focus,
+.tg-form__field textarea:focus { outline: none; border-color: var(--theme-color-primary); box-shadow: 0 0 0 3px rgba(61, 61, 66, 0.12); }
+.tg-form__consent { font-size: var(--theme-font-size-small); line-height: 1.4; }
+.tg-form__consent .wpcf7-list-item { margin: 0; }
+.tg-form__consent label { display: inline-flex; align-items: center; gap: 0.625rem; cursor: pointer; }
+.tg-form__consent input[type="checkbox"] { width: 1rem; height: 1rem; accent-color: var(--theme-color-primary); margin: 0; }
+.tg-form__submit { position: relative; }
+.tg-contact-form .wpcf7-submit { cursor: pointer; }
+.tg-contact-form .wpcf7-spinner { position: absolute; margin: 0.5rem 0 0 1rem; }
+.tg-contact-form .wpcf7-not-valid { border-color: var(--theme-color-brand); }
+.tg-contact-form .wpcf7-not-valid-tip { color: var(--theme-color-brand); font-size: var(--theme-font-size-small); margin-top: 0.25rem; }
+.tg-contact-form .wpcf7-response-output { margin: 0 !important; padding: 0.75rem 1rem !important; border-radius: 0.5rem; font-size: var(--theme-font-size-small); }
+@media (max-width: 767.98px) {
+  .tg-contact-form { padding: 3rem 0; }
+}
+
+/*** Services-Karte: Bild → Titel → Text je 15px (Figma Card Gap 15) ***/
+.tg-services__card { gap: 0.9375rem; }
+.tg-services__body { display: flex; flex-direction: column; gap: 0.9375rem; }
+.tg-services__card-title { margin: 0; }
+
+/*** Contact Info: Tablet enger, damit die E-Mail-Adresse nicht umbricht ***/
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .tg-contact-info__grid { gap: 1.5rem; }
+}
+.tg-contact-info__text a { overflow-wrap: anywhere; }
+
+/*** Feinschliff nach Figma "Werkstatt & Team – Mobile" ***/
+@media (max-width: 767.98px) {
+  .tg-history__row { gap: 1.5rem; margin-bottom: 2.25rem; }   /* Gap 24 / 36 */
+  .tg-team__title { margin-bottom: 1.75rem; }                  /* Gap 28 */
+  .tg-team__grid { gap: 1rem; }                                /* 2 Spalten, Gap 16 */
+}
+
+/*** Contact Form mit Kontaktdaten daneben: Formular links (640px), Kontaktdaten rechts ***/
+.tg-contact-form__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 40rem) minmax(0, 22rem);
+  justify-content: space-between;
+  gap: 4rem;
+  align-items: start;
+}
+.tg-contact-form__inner { max-width: none; }
+.tg-contact-form__aside {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 2.5rem;            /* optisch auf Höhe der Überschrift */
+}
+@media (max-width: 991.98px) {
+  .tg-contact-form__grid { grid-template-columns: minmax(0, 1fr); gap: 3rem; }
+  .tg-contact-form__aside { padding-top: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+}
+@media (max-width: 767.98px) {
+  .tg-contact-form__aside { grid-template-columns: 1fr; }
 }

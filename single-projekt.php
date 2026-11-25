@@ -7,13 +7,13 @@ get_header(); ?>
 
 <main id="main" class="site-main">
   <?php while (have_posts()) : the_post();
-    $acf      = function_exists('get_field');
-    $text     = $acf ? get_field('beschreibung') : '';
+    $has_acf      = function_exists('get_field');
+    $text     = $has_acf ? get_field('beschreibung') : '';
     $facts    = array(
-      'Ort'      => $acf ? get_field('ort') : '',
-      'Jahr'     => $acf ? get_field('jahr') : '',
-      'Material' => $acf ? get_field('material') : '',
-      'Leistung' => $acf ? get_field('leistung') : '',
+      'Ort'      => $has_acf ? get_field('ort') : '',
+      'Jahr'     => $has_acf ? get_field('jahr') : '',
+      'Material' => $has_acf ? get_field('material') : '',
+      'Leistung' => $has_acf ? get_field('leistung') : '',
     );
     $facts    = array_filter($facts);
     $overview = get_page_by_path('projekte') ? get_page_by_path('projekte') : get_page_by_path('work');
@@ -57,7 +57,7 @@ get_header(); ?>
 
     <?php
     // Weitere Module (Sketch Compare, Galerie, CTA …) aus dem Feld "Seitenmodule"
-    if ($acf && have_rows('page_modules')) {
+    if ($has_acf && have_rows('page_modules')) {
       get_template_part('templates/render', 'page-modules');
     }
 
