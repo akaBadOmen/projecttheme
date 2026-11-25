@@ -26,7 +26,12 @@
 
       <nav class="footer-col" aria-label="<?php esc_attr_e( 'Rechtliches', 'textdomaintomodify' ); ?>">
         <h2 class="footer-heading">Rechtliches</h2>
-        <?php wp_nav_menu( array( 'theme_location' => 'menu-footer', 'menu_id' => 'menu-footer', 'menu_class' => 'footer-menu', 'container' => false, 'depth' => 1 ) ); ?>
+        <?php /* Fiktives Studienprojekt: Impressum & Datenschutz bewusst nur als Hinweis, ohne eigene Seiten/Links */ ?>
+        <ul class="footer-menu">
+          <li><span class="footer-placeholder">Impressum</span></li>
+          <li><span class="footer-placeholder">Datenschutz</span></li>
+          <li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
       </nav>
 
     </div>
