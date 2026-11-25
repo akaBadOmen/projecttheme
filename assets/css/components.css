@@ -540,3 +540,6 @@ section.galerie:has(+ section.galerie) { padding-bottom: var(--theme-gutter) !im
 @media (max-width: 767.98px) {
   .tg-contact-form__aside { grid-template-columns: 1fr; }
 }
+
+/* A11y: Telefon/E-Mail-Links groß genug zum Antippen */
+.tg-contact-info__text a { display: inline-block; min-height: 24px; padding: 2px 0; }

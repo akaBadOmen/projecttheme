@@ -37,7 +37,7 @@ $projects = new WP_Query($args);
           <article class="tg-project">
             <a class="tg-project__image" href="<?php the_permalink(); ?>" tabindex="-1" aria-hidden="true">
               <?php if (has_post_thumbnail()) {
-                the_post_thumbnail('large', array('loading' => 'lazy', 'decoding' => 'async', 'alt' => ''));
+                the_post_thumbnail('large', array('loading' => 'lazy', 'decoding' => 'async', 'alt' => '', 'sizes' => '(min-width: 768px) 50vw, 100vw'));
               } ?>
             </a>
             <div class="tg-project__content">

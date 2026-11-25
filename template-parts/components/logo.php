@@ -12,7 +12,7 @@ $site_name = get_bloginfo( 'name' );
       class="site-logo"
       src="<?php echo esc_url( $logo_url ); ?>"
       alt="<?php echo esc_attr( $site_name ); ?>"
-      width="283"
-      height="57"
+      width="31"
+      height="32"
     >
   </a>

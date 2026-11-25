@@ -79,3 +79,8 @@
 
 /* Impressum/Datenschutz: nur Text, kein Link (fiktives Projekt) */
 .footer-placeholder { display: block; font-size: var(--theme-font-size-small); line-height: 1.4; }
+
+/* A11y: Touch-Targets mind. 24px hoch (Lighthouse/WCAG 2.5.8) */
+.site-footer .footer-menu a,
+.site-footer .footer-text a,
+.footer-placeholder { display: inline-block; min-height: 24px; padding: 2px 0; }

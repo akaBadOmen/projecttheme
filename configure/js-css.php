@@ -25,12 +25,26 @@ function projecttheme_enqueue_assets() {
 		file_exists( $bootstrap_css ) ? filemtime( $bootstrap_css ) : null
 	);
 
-	wp_enqueue_style(
-		'projecttheme-theme',
-		$theme_uri . '/assets/css/theme.css',
-		array( 'projecttheme-bootstrap-style' ),
-		$theme_version
-	);
+	/*
+	 * Performance: Statt theme.css (die alle Dateien per @import nacheinander lädt)
+	 * werden die Teil-Dateien direkt eingebunden. So lädt der Browser sie parallel
+	 * statt in einer Kette – Reihenfolge bleibt gleich wie in theme.css.
+	 */
+	$theme_parts = array( 'constants', 'base', 'typography', 'header', 'menu', 'footer', 'forms', 'components', 'pages' );
+	$previous    = 'projecttheme-bootstrap-style';
+	foreach ( $theme_parts as $part ) {
+		$file = $theme_path . '/assets/css/' . $part . '.css';
+		if ( ! file_exists( $file ) ) {
+			continue;
+		}
+		wp_enqueue_style(
+			'projecttheme-' . $part,
+			$theme_uri . '/assets/css/' . $part . '.css',
+			array( $previous ),
+			filemtime( $file )
+		);
+		$previous = 'projecttheme-' . $part;
+	}
 
 	wp_enqueue_script(
 		'projecttheme-bootstrap-script',
@@ -78,3 +92,19 @@ function cleaning_wordpress() {
 	wp_dequeue_style( 'classic-theme-styles' );
 }
 add_action( 'wp_enqueue_scripts', 'cleaning_wordpress', 100 );
+
+
+/**
+ * Performance: die zwei wichtigsten Schriften früh vorladen (Überschrift + Fließtext),
+ * damit der Text nicht erst nach dem CSS geladen wird.
+ */
+function projecttheme_preload_fonts() {
+	$fonts = array( 'cormorant-garamond-v21-latin-700.woff2', 'inter-v20-latin-regular.woff2' );
+	foreach ( $fonts as $font ) {
+		printf(
+			'<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n",
+			esc_url( get_template_directory_uri() . '/assets/css/fonts/' . $font )
+		);
+	}
+}
+add_action( 'wp_head', 'projecttheme_preload_fonts', 1 );

@@ -45,3 +45,25 @@ add_filter('acf/settings/load_json', function($paths) {
 
     return $paths;
 });
+
+/**
+ * SEO: Meta-Description im <head> ausgeben.
+ * Seiten: Feld "meta_description" (ACF-Gruppe "Page Fields"). Projekte: Textauszug.
+ * Fallback: allgemeine Beschreibung der Tischlerei.
+ */
+function projecttheme_meta_description() {
+	$desc = '';
+	if ( is_singular() ) {
+		if ( function_exists( 'get_field' ) ) {
+			$desc = (string) get_field( 'meta_description' );
+		}
+		if ( ! $desc && has_excerpt() ) {
+			$desc = get_the_excerpt();
+		}
+	}
+	if ( ! $desc ) {
+		$desc = 'Maßmöbel und Innenausbau aus unserer Werkstatt in Fladnitz an der Teichalm, Steiermark. Geplant mit Ihnen, gebaut von Hand, gemacht für Generationen.';
+	}
+	printf( '<meta name="description" content="%s">' . "\n", esc_attr( wp_strip_all_tags( $desc ) ) );
+}
+add_action( 'wp_head', 'projecttheme_meta_description', 2 );

@@ -24,7 +24,7 @@ $text  = get_sub_field('text');
       ?>
         <<?php echo $tag; ?> class="tg-services__card"<?php if ($clink) : ?> href="<?php echo esc_url($clink['url']); ?>"<?php endif; ?>>
           <?php if ($img) : ?>
-            <div class="tg-services__image"><?php echo wp_get_attachment_image($img, 'large', false, ['loading' => 'lazy', 'decoding' => 'async']); ?></div>
+            <div class="tg-services__image"><?php echo wp_get_attachment_image($img, 'large', false, ['loading' => 'lazy', 'decoding' => 'async', 'sizes' => '(min-width: 992px) 33vw, (min-width: 576px) 50vw, 100vw']); ?></div>
           <?php endif; ?>
           <div class="tg-services__body">
             <?php if ($ctitle) : ?><h3 class="tg-services__card-title"><?php echo esc_html($ctitle); ?></h3><?php endif; ?>

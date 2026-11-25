@@ -5,7 +5,7 @@
 
       <div class="footer-col footer-col--brand">
         <a class="footer-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php esc_attr_e( 'Zur Startseite', 'textdomaintomodify' ); ?>">
-          <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/logo.svg' ); ?>" alt="Tischlerei Gruber">
+          <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/logo.svg' ); ?>" alt="Tischlerei Gruber" width="38" height="40" loading="lazy">
         </a>
         <p class="footer-text">Maßmöbel &amp; Innenausbau<br>aus der Steiermark.</p>
       </div>
